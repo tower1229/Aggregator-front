@@ -1,0 +1,15 @@
+{
+    "background_color": "#0c0e11",
+    "description": "WEChart",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "logo/black.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "name": "Awesome Defi Chart",
+    "short_name": "WEChart",
+    "start_url": "/"
+}

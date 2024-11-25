@@ -1,0 +1,80 @@
+.dropdown {
+  /* stylelint-disable */
+  --active-bg: var(--u-color-hover);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+  @apply !rounded-sm !mt-5 !ml-0 !py-5 !px-5;
+
+  :global {
+    .n-dropdown-option-body {
+      &::before {
+        left: 0px !important;
+        right: 0px !important;
+      }
+
+      &::hover {
+        @apply !bg-bg2;
+      }
+
+      @apply rounded-sm min-w-180px items-center !h-auto;
+
+      &:not(.n-dropdown-option-body--group) {
+        @apply -mx-2 py-2.5 px-3;
+
+        &:not(.n-dropdown-option-body--disabled):hover {
+          background-color: var(--active-bg) !important;
+
+          &.n-dropdown-option-body.n-dropdown-option-body--pending::before {
+            background-color: unset !important;
+          }
+        }
+      }
+
+      &__prefix {
+        @apply !w-auto !hidden;
+
+        &.n-dropdown-option-body__prefix--show-icon {
+          @apply mr-2 !inline-flex;
+        }
+      }
+
+      /** label */
+      &__label {
+        @apply leading-none !u-h6;
+
+        &::first-child {
+          @apply text-color2;
+        }
+      }
+
+      /** title */
+      &--group {
+        @apply !h-auto !leading-none !mb-4;
+
+        .n-dropdown-option-body {
+          &__prefix {
+            @apply !hidden;
+          }
+
+          &__label {
+            @apply leading-none !cursor-default;
+          }
+        }
+      }
+
+      &--active {
+        @apply !text-primary;
+
+        .n-dropdown-option-body {
+          &__suffix {
+            @apply rounded h-2 -mr-1 ml-2 w-2 !min-w-0 !p-0;
+          }
+        }
+
+        &::before {
+          color: none !important;
+          background: none !important;
+        }
+      }
+    }
+  }
+}

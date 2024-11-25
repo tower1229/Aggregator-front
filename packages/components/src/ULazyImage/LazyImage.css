@@ -1,0 +1,52 @@
+@keyframes u-lazy-image-wave {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+.u-lazy-image {
+  &-img {
+    @apply object-cover;
+  }
+
+  /** https://codepen.io/goodkatz/pen/LYPGxQz */
+  &-waves {
+    @apply h-1/2 mt-1/2;
+
+    & .parallax > use {
+      animation: u-lazy-image-wave 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
+
+    & .parallax > use:nth-child(1) {
+      animation-duration: 7s;
+      animation-delay: -2s;
+    }
+
+    & .parallax > use:nth-child(2) {
+      animation-duration: 10s;
+      animation-delay: -3s;
+    }
+
+    & .parallax > use:nth-child(3) {
+      animation-duration: 13s;
+      animation-delay: -4s;
+    }
+
+    & .parallax > use:nth-child(4) {
+      animation-duration: 20s;
+      animation-delay: -5s;
+    }
+  }
+
+  &-placeholder {
+    @apply bg-color3 inline-block overflow-hidden;
+
+    &.failed {
+      @apply bg-color3 text-white inline-flex items-center justify-center;
+    }
+  }
+}

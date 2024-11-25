@@ -1,0 +1,9 @@
+lib/
+dist/
+scripts/templates/
+node_modules/
+*.json
+.npmrc
+pnpm-lock.yaml
+pnpm-workspace.yaml
+public/

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "types": ["vite/client", "node"],
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "lib": ["esnext", "dom"],
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "paths": {
+      "@/ex/*": ["./demo/*"],
+      "@/comps/*": ["./src/*"],
+      // This is import to fix pnpm bug: The inferred type of "X" cannot be named without a reference to "Y". This is likely not portable. A type annotation is necessary.
+      // https://github.com/microsoft/TypeScript/issues/42873
+      // https://github.com/qmhc/vite-plugin-dts/issues/51
+      "naive-ui": ["node_modules/naive-ui/"]
+    }
+  }
+}

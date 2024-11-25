@@ -1,0 +1,25 @@
+/* UDropdownFilter */
+
+.u-dropdown-filter {
+  :hover .n-base-selection {
+    @apply bg-color-hover;
+  }
+
+  .n-base-selection {
+    &-label {
+      background: none;
+    }
+
+    &-input {
+      @apply text-right !pr-8;
+    }
+
+    &__border {
+      border: none;
+    }
+  }
+
+  .n-base-selection-placeholder {
+    @apply justify-end items-center !pr-8;
+  }
+}

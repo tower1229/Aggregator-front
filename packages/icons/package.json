@@ -1,0 +1,30 @@
+{
+  "name": "@aggregator/icons",
+  "version": "0.0.1",
+  "description": "Comunion icons",
+  "module": "dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && ts-node scripts/build.ts"
+  },
+  "repository": "comunion-io/front-next.git",
+  "keywords": [
+    "svg",
+    "icon"
+  ],
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comunion-io/front-next/issues"
+  },
+  "homepage": "https://github.com/comunion-io/front-next#readme",
+  "devDependencies": {
+    "@aggregator/utils": "workspace:^0.0.1",
+    "@types/fs-extra": "^11.0.1",
+    "@types/svgo": "^3.0.0",
+    "@vue/compiler-sfc": "^3.2.47",
+    "fs-extra": "^11.1.0",
+    "lodash": "^4.17.21",
+    "rimraf": "^4.4.0",
+    "svgo": "^3.0.2"
+  }
+}

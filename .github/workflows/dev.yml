@@ -1,0 +1,51 @@
+name: Develop environment deployment
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build
+        run: pnpm build:dev
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-northeast-1
+      # - name: Deploy static site to S3 bucket
+      #   run: |
+      #     cd packages/homepage/dist
+      #     aws s3 sync . s3://comunion-dev-homepage --delete --acl public-read
+      #     aws cloudfront create-invalidation --distribution-id EL93NFWXPZW3F --paths '/index.html' '/service-worker.js' '/manifest.json'
+      #     cd ../../web/dist
+      #     aws s3 sync . s3://comunion-dev --delete --acl public-read
+      #     aws cloudfront create-invalidation --distribution-id E2AJ2NIGHSNYL --paths '/index.html' '/service-worker.js' '/manifest.json'
+      - name: Notification
+        uses: erguotou520/instant-access-action@0.0.4
+        if: ${{ success() }}
+        with:
+          channel: '3fa27c0affa54c069e428af95f0f98fa'
+          head: '{{branchName}} deploy succeed!'
+          body: '{{author}} commit "{{commitMessage}}" on {{repositoryName}}#{{branchName}} branch at {{commitTime}}'
+      - name: Notification
+        uses: erguotou520/instant-access-action@0.0.4
+        if: ${{ failure() }}
+        with:
+          channel: '3fa27c0affa54c069e428af95f0f98fa'
+          head: '{{branchName}} deploy failed!'
+          body: '{{author}} commit "{{commitMessage}}" on {{repositoryName}}#{{branchName}} branch at {{commitTime}}'

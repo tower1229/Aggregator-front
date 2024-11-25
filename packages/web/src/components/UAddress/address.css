@@ -1,0 +1,15 @@
+.u-address {
+  @apply flex items-center;
+
+  &__text {
+    @apply cursor-default flex-1 truncate;
+  }
+
+  &__icon {
+    @apply cursor-pointer leading-none ml-2 text-color3;
+  }
+
+  &__icon:hover {
+    @apply text-primary;
+  }
+}

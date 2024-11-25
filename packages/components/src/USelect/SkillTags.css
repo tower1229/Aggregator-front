@@ -1,0 +1,37 @@
+.skill-tags {
+  .n-base-selection .n-base-selection-tags {
+    @apply py-2 px-4;
+
+    .v-overflow {
+      @apply h-8;
+
+      .n-base-selection-tag-wrapper {
+        .n-tag {
+          @apply !h-8;
+        }
+      }
+    }
+
+    .n-tag.n-tag--closable {
+      @apply bg-[var(--u-purple-color)] rounded-none text-sm !h-8;
+
+      .n-tag__content {
+        @apply text-color1;
+      }
+
+      .n-tag__border {
+        border: none;
+      }
+
+      .n-base-close {
+        .n-base-icon {
+          @apply flex items-center justify-center;
+
+          svg {
+            @apply h-2 text-color1 w-2;
+          }
+        }
+      }
+    }
+  }
+}

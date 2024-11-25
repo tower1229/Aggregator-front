@@ -1,0 +1,20 @@
+.u-card {
+  .n-card-header {
+    .n-card-header__main {
+      @apply font-primary font-medium tracking-normal;
+    }
+  }
+
+  .n-base-close {
+    color: #3f2d99;
+  }
+}
+
+.u-card.n-card--bordered:hover {
+  border-color: #5331f4;
+}
+
+/* create dialog no need hover border */
+.u-drawer-container .u-card.n-card--bordered:hover {
+  @apply border-color-border;
+}

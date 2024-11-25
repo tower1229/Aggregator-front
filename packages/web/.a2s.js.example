@@ -1,0 +1,47 @@
+/* eslint-disable */
+/** @type {import('@zidong/a2s/dist/config').DataSourceConfig} */
+module.exports = {
+  // Custom plugins
+  plugins: [
+    /** require('a2s-custom-plugin') */
+  ],
+  // Data source type
+  // support openapi and yapi
+  dataSourceOptions: {
+    /** @type {import('@zidong/a2s/dist/plugins').OpenAPIDataSourceOptions} */
+    openapi: {
+      isVersion2: true,
+      apiUrl: 'https://d.app.comunion.io/api/swagger/doc.json'
+      // basicAuth: {
+      //   username: '',
+      //   password: ''
+      // },
+      // headers: {
+      //   Cookie: 'xxx=xxx; xxx=xxx;'
+      // }
+    }
+  },
+  /** @type {import('@zidong/a2s/dist/plugins').YAPIDataSourceOptions} */
+  // dataSourceOptions: {
+  //   yapi: {
+  //     apiUrl: 'https://yapi.comunion.io/',
+  //     projectId: 191,
+  //     token: '4b55fdd8c8f678366e362ae8267bdaf168949afee60f390654d612e51a67e457',
+  //     headers: {
+  //       Cookie:
+  //         '_yapi_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQyNCwiaWF0IjoxNjY2MDg0ODMwLCJleHAiOjE2NjY2ODk2MzB9.6WfzmGQsOmZgisOCWIDqI-8gvuxQevGcoQleFuv8Bi0; _yapi_uid=424'
+  //     }
+  //   }
+  // },
+  outputPath: 'src/services',
+  overwrite: true,
+  // [Optional, default: 'axios']
+  requestAdapter: 'axios',
+  // [Optional, default: true]
+  trim: true,
+  // [Optional, default: ['a2s.adapter.ts']]
+  // eg: ['a2s.adapter.ts']
+  ignoreFiles: ['a2s.adapter.ts', 'a2s.types.ts'],
+  // [Optional, default: null]
+  dataPath: null
+}

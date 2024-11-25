@@ -1,0 +1,9 @@
+.u-address-input {
+  &__icon {
+    @apply text-color3;
+  }
+
+  &__close {
+    @apply cursor-pointer hover:text-error;
+  }
+}

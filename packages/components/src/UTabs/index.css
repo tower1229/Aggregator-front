@@ -1,0 +1,5 @@
+.u-tabs.no-border {
+  .n-tabs-nav {
+    @apply !border-0;
+  }
+}

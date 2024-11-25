@@ -1,0 +1,8 @@
+/** USearch */
+.u-search {
+  @apply rounded-4px;
+
+  &-prefix {
+    @apply w-4 h-4;
+  }
+}

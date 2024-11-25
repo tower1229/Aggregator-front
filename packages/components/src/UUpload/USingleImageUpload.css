@@ -1,0 +1,29 @@
+.u-single-upload {
+  &-inner {
+    @apply cursor-pointer inline-flex items-center relative overflow-hidden;
+  }
+
+  &-wrapper {
+    @apply rounded-full text-0px group overflow-hidden relative;
+  }
+
+  &-preview {
+    @apply flex flex-col bg-[rgba(0,0,0,0.3)] transform translate-y-full transition top-0 bottom-0 left-0 absolute items-center justify-center group-hover:translate-y-0;
+
+    &__icon {
+      @apply cursor-pointer mb-1 text-light-900 w-5 hover:text-white;
+    }
+  }
+
+  &-img {
+    @apply bg-purple rounded-full flex justify-center items-center;
+  }
+
+  &-progress {
+    @apply -top-1 -left-1 absolute !h-20 !w-20;
+  }
+
+  &-txt {
+    @apply text-primary w-46 h-9 border-1 text-center leading-9  border-primary rounded-xl ml-5 u-title2;
+  }
+}

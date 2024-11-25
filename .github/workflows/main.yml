@@ -1,0 +1,59 @@
+name: Production environment deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build
+        run: pnpm build:prod
+      # - name: Deploy homepage
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.PROD_HOST }}
+      #     username: ${{ secrets.PROD_USERNAME }}
+      #     passphrase: ${{ secrets.PROD_PASSPHRASE }}
+      #     key: ${{ secrets.PROD_KEY }}
+      #     port: ${{ secrets.PROD_PORT }}
+      #     source: 'packages/homepage/dist/*'
+      #     target: '/app/homepage/prod'
+      #     strip_components: 3
+      # - name: Deploy dashboard
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.PROD_HOST }}
+      #     username: ${{ secrets.PROD_USERNAME }}
+      #     passphrase: ${{ secrets.PROD_PASSPHRASE }}
+      #     key: ${{ secrets.PROD_KEY }}
+      #     port: ${{ secrets.PROD_PORT }}
+      #     source: 'packages/web/dist/*'
+      #     target: '/app/web/prod'
+      #     strip_components: 3
+      - name: Notification
+        uses: erguotou520/instant-access-action@0.0.4
+        if: ${{ success() }}
+        with:
+          channel: '3fa27c0affa54c069e428af95f0f98fa'
+          head: '{{branchName}} deploy succeed!'
+          body: '{{author}} commit "{{commitMessage}}" on {{repositoryName}}#{{branchName}} branch at {{commitTime}}'
+      - name: Notification
+        uses: erguotou520/instant-access-action@0.0.4
+        if: ${{ failure() }}
+        with:
+          channel: '3fa27c0affa54c069e428af95f0f98fa'
+          head: '{{branchName}} deploy failed!'
+          body: '{{author}} commit "{{commitMessage}}" on {{repositoryName}}#{{branchName}} branch at {{commitTime}}'

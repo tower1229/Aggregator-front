@@ -1,0 +1,61 @@
+{
+  "name": "@aggregator/components",
+  "version": "0.0.1",
+  "description": "Comunion UI components",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "type": "module",
+  "files": [
+    "src",
+    "dist",
+    "windi.config.ts",
+    "README.md",
+    "README_zh.md"
+  ],
+  "scripts": {
+    "#watch:components": "NODE_ENV=development node scripts/build.js",
+    "watch:components": "NODE_ENV=development node scripts/vite.js",
+    "watch:types": "tsc --project tsconfig.types.json --watch",
+    "#watch:styles": "mkdir -p dist/es && cp -r src/Typography dist/es",
+    "#watch": "rimraf dist && run-p watch:*",
+    "#dev": "npm run watch",
+    "#build:components": "node scripts/build.js",
+    "build:components": "node scripts/vite.js",
+    "build:types": "tsc --project tsconfig.types.json",
+    "#build:styles": "mkdir -p dist/es && cp -r src/Typography dist/es",
+    "build": "rimraf dist && npm run build:types && npm run build:components",
+    "dev:demo": "vite"
+  },
+  "repository": "comunion-io/front-next.git",
+  "keywords": [
+    "vue",
+    "vue3",
+    "ui",
+    "components"
+  ],
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comunion-io/front-next/issues"
+  },
+  "homepage": "https://github.com/comunion-io/front-next#readme",
+  "dependencies": {
+    "@aggregator/icons": "0.0.1",
+    "@aggregator/utils": "0.0.1",
+    "naive-ui": "2.33.5",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "esbuild": "^0.17.11",
+    "fast-glob": "^3.2.12",
+    "npm-run-all": "^4.1.5",
+    "postcss-nested": "^6.0.1",
+    "rimraf": "^4.4.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.3.5",
+    "vite-plugin-windicss": "^1.8.10",
+    "vue-router": "^4.1.6",
+    "windicss": "^3.5.6"
+  }
+}

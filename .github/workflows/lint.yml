@@ -1,0 +1,32 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - develop
+      - release
+      - main
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6
+      - name: Install dependencies
+        run: pnpm i
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          prettier: true
+          stylelint: true
+      - name: Run typescript check
+        run: pnpm run prepare-build && pnpm --dir packages/web check

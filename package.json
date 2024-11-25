@@ -1,0 +1,78 @@
+{
+  "name": "aggregator-front",
+  "version": "0.0.1",
+  "private": true,
+  "description": "aggregator frontend packages",
+  "keywords": [
+    "comunion"
+  ],
+  "repository": "@WEdex-Space/Aggregator-front",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "postinstall": "husky install",
+    "dev:utils": "pnpm --filter @aggregator/utils dev",
+    "dev:components": "pnpm --filter @aggregator/components dev",
+    "dev:web": "pnpm --filter @aggregator/web dev",
+    "dev": "run-s build:utils build:icon build:components && npm run dev:web",
+    "serve": "pnpm --filter @aggregator/web serve",
+    "check": "pnpm --filter @aggregator/web check",
+    "build:icon": "pnpm --filter @aggregator/icons build",
+    "build:utils": "pnpm --filter @aggregator/utils build",
+    "build:components": "pnpm --filter @aggregator/components build",
+    "build:dev": "run-s build:utils build:icon build:components && pnpm --filter @aggregator/web build:dev",
+    "build:release": "run-s build:utils build:icon build:components && pnpm --filter @aggregator/web build:release",
+    "build:prod": "run-s build:utils build:icon build:components && pnpm --filter @aggregator/web build:prod",
+    "clear:dist": "rm -rf packages/*/dist",
+    "fix:contracts": "prettier ./packages/web/src/contracts --write",
+    "gen:component": "ts-node scripts/generate.ts component",
+    "gen:contract:dev": "ts-node scripts/generate.ts contract:dev && npm run fix:contracts",
+    "gen:contract:release": "ts-node scripts/generate.ts contract:release && npm run fix:contracts",
+    "gen:contract:prod": "ts-node scripts/generate.ts contract:prod && npm run fix:contracts",
+    "gen:api": "pnpm --filter @aggregator/web run gen:api && prettier packages/web/src/services --write",
+    "stylint": "stylelint \"packages/*/src/**/*.{css,less,scss,sass,styl}\" --fix",
+    "jslint": "eslint ./ --fix",
+    "lint": "run-s stylint jslint"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.3.0",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "devmoji": "^2.3.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "fs-extra": "^10.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.5.0",
+    "lodash": "^4.17.21",
+    "npm-run-all": "^4.1.5",
+    "ora": "^6.1.2",
+    "prettier": "^2.8.4",
+    "stylelint": "^14.16.1",
+    "stylelint-config-css-modules": "^3.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
+    "stylelint-no-unsupported-browser-features": "^5.0.4",
+    "stylelint-order": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "ethereumjs-abi": "https://registry.npmjs.org/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import '@aggregator/components/dist/es/index.css';
+
+/* reset */
+svg {
+  display: inline;
+}
+
+body {
+  @apply bg-color-body font-primary text-sm text-color1 leading-5 break-words;
+}
+
+::-webkit-scrollbar {
+  @apply h-1 w-1;
+
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-color-scrollbar rounded h-1 w-1;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* home page */
+.homePage {
+  @apply flex-1;
+}
+
+/* custom */
+.translateInput .n-input__border,
+.translateInput .n-input__state-border {
+  display: none;
+}
+
+.weightInput .n-input__input-el {
+  font-weight: 700;
+}
